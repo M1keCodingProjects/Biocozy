@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./app.js"></script>
+    <title>Biocozy</title>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="header-gui">Biocozy</div>
+        <div class="sidebar"></div>
+        <div class="game-container">
+            <div id="triplet">AGC</div>
+
+            <input type="text" value="Serina">
+            <input type="text" value="Ser">
+            <input type="text" value="S">
+            <div id="lateralChainStructure"></div>
+            <button class="btn-addGroup" id="CH2" onclick="addGroup('CH2')">CH2</button>
+            <button class="btn-addGroup" id="OH" onclick="addGroup('OH')">OH</button>
+            <button class="btn-addGroup" id="delete" onclick="removeGroup()">X</button>
+        </div>
+    </div>
+</body>
+</html>
