@@ -13,15 +13,93 @@
         <div class="header-gui">Biocozy</div>
         <div class="sidebar"></div>
         <div class="game-container">
-            <div id="triplet">AGC</div>
+            <div class="data-container" id="triplet">AGC</div>
 
-            <input type="text" value="Serina">
-            <input type="text" value="Ser">
-            <input type="text" value="S">
-            <div id="lateralChainStructure"></div>
-            <button class="btn-addGroup" id="CH2" onclick="addGroup('CH2')">CH2</button>
-            <button class="btn-addGroup" id="OH" onclick="addGroup('OH')">OH</button>
-            <button class="btn-addGroup" id="delete" onclick="removeGroup()">X</button>
+            <div id="nameSelectors-container">
+                <select name="fullName" id="fullName">
+                    <option value="Alanina">Alanina</option>
+                    <option value="Arginina">Arginina</option>
+                    <option value="Asparagina">Asparagina</option>
+                    <option value="aspartico">Acido aspartico</option>
+                    <option value="Cisteina">Cisteina</option>
+                    <option value="Acido glutammico">Acido glutammico</option>
+                    <option value="Glutammina">Glutammina</option>
+                    <option value="Glicina">Glicina</option>
+                    <option value="Istidina">Istidina</option>
+                    <option value="Isoleucina">Isoleucina</option>
+                    <option value="Leucina">Leucina</option>
+                    <option value="Lisina">Lisina</option>
+                    <option value="Metionina">Metionina</option>
+                    <option value="Fenilalanina">Fenilalanina</option>
+                    <option value="Prolina">Prolina</option>
+                    <option value="Serina">Serina</option>
+                    <option value="Treonina">Treonina</option>
+                    <option value="Triptofano">Triptofano</option>
+                    <option value="Tirosina">Tirosina</option>
+                    <option value="Valina">Valina</option>
+                </select>
+
+                <select name="acronym" id="acronym">
+                    <option value="Ala">Ala</option>
+                    <option value="Arg">Arg</option>
+                    <option value="Asn">Asn</option>
+                    <option value="Asp">Asp</option>
+                    <option value="Cys">Cys</option>
+                    <option value="Glu">Glu</option>
+                    <option value="Gln">Gln</option>
+                    <option value="Gly">Gly</option>
+                    <option value="His">His</option>
+                    <option value="Ile">Ile</option>
+                    <option value="Leu">Leu</option>
+                    <option value="Lys">Lys</option>
+                    <option value="Met">Met</option>
+                    <option value="Phe">Phe</option>
+                    <option value="Pro">Pro</option>
+                    <option value="Ser">Ser</option>
+                    <option value="Thr">Thr</option>
+                    <option value="Trp">Trp</option>
+                    <option value="Tyr">Tyr</option>
+                    <option value="Val">Val</option>
+                </select>
+
+                <select name="letter" id="letter">
+                    <option value="A">A</option>
+                    <option value="R">R</option>
+                    <option value="N">N</option>
+                    <option value="D">D</option>
+                    <option value="C">C</option>
+                    <option value="E">E</option>
+                    <option value="Q">Q</option>
+                    <option value="G">G</option>
+                    <option value="H">H</option>
+                    <option value="I">I</option>
+                    <option value="L">L</option>
+                    <option value="K">K</option>
+                    <option value="M">M</option>
+                    <option value="F">F</option>
+                    <option value="P">P</option>
+                    <option value="S">S</option>
+                    <option value="T">T</option>
+                    <option value="W">W</option>
+                    <option value="Y">Y</option>
+                    <option value="V">V</option>
+                </select>
+            </div>
+
+            <div class="data-container lighter" id="lateralChain-gameWrapper">
+                <div class="data-container" id="lateralChainStructure">-</div>
+                <button class="btn-addGroup" id="CH2" onclick="addGroup('CH2')">CH2</button>
+                <button class="btn-addGroup" id="OH" onclick="addGroup('OH')">OH</button>
+                <button class="btn-addGroup" id="delete" onclick="removeGroup()">X</button>
+                <button class="btn-addGroup" id="delete" onclick="removeGroup()">X</button>
+                <button class="btn-addGroup" id="delete" onclick="removeGroup()">X</button>
+                <button class="btn-addGroup" id="delete" onclick="removeGroup()">X</button>
+                <button class="btn-addGroup" id="delete" onclick="removeGroup()">X</button>
+                <button class="btn-addGroup" id="delete" onclick="removeGroup()">X</button>
+                <button class="btn-addGroup" id="delete" onclick="removeGroup()">X</button>
+                <button class="btn-addGroup" id="delete" onclick="removeGroup()">X</button>
+            </div>
+            
         </div>
     </div>
 </body>
