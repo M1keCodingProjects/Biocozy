@@ -18,19 +18,62 @@ html, body {
     background: #ddd;
 }
 
-.flex-container {
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
+.centered-grid-container {
+    display: grid;
     justify-content: center;
+    align-items: center;
+    justify-items: center;
 }
 
-.flex-row {
-    width: auto;
+#game-section-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr repeat(3, .25fr) 1fr 1fr;
 }
 
-.flex-item {
-    text-align: center;
+.grid-fullcolumn-item {
+    grid-column: 1 / -1;
+}
+
+.grid-row3-item {
+    grid-row: 2 / -2;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 2.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: .5rem 1rem;
+    color: darkcyan;
+    text-shadow: .15rem .15rem rgba(0, 0, 0, .25);
+    width: 100vw;
+}
+
+.display-squareimage {
+    width: 20rem;
+    height: auto;
+    box-shadow: .15rem .15rem rgba(0, 0, 0, .15);
+}
+
+.input-text-container {
+    justify-self: start;
+}
+
+.input-text {
+    background-color: darkcyan;
+    color: #eee;
+    padding: .3rem .5rem;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 1rem;
+    font-weight: bold;
+}
+
+.input-text::placeholder {
+    color: #bee;
+}
+
+.input-text:focus {
+    outline: none;
+    background-color: rgb(0, 150, 150);
 }
