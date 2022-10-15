@@ -12,6 +12,7 @@ html, body {
     height: 100%;
     padding: 0;
     margin : 0;
+    overflow: hidden;
     font-family: RoundedFont;
     font-size: 1.3rem;
     font-weight: bold;
@@ -41,13 +42,31 @@ html, body {
     align-items: center;
 }
 
-.title {
+#title {
     font-size: 2.5rem;
     background-color: rgba(255, 255, 255, 0.05);
     padding: .5rem 1rem;
     color: darkcyan;
     text-shadow: .15rem .15rem rgba(0, 0, 0, .25);
     width: 100vw;
+    position: relative;
+}
+
+#title::before, #title::after {
+    content: ".";
+    position: absolute;
+    top: 0;
+    transform-origin: .1rem 2.16rem;
+    transform: rotate(var(--angle));
+    text-shadow: none;
+}
+
+#title::before {
+    left: 3.95rem;
+}
+
+#title::after {
+    left: 6.8rem;
 }
 
 .display-squareimage {
