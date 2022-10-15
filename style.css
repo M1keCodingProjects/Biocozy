@@ -3,7 +3,7 @@
 }
 
 @font-face {
-    font-family: Rounded;
+    font-family: RoundedFont;
     src: url("./VarelaRound-Regular.ttf");
 }
 
@@ -12,63 +12,25 @@ html, body {
     height: 100%;
     padding: 0;
     margin : 0;
-    font-family: Rounded;
-    background: linear-gradient(45deg, rgb(197, 197, 231), 45%, rgb(16, 164, 115));
-}
-
-hr {
-    background-color: rgba(255, 255, 255, .5);
-    width: 100%;
-    height: .1rem;
-    margin: 1rem 0;
-    border: none;
-}
-
-.game-container {
-    width: 100%;
-    height: 100%;
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 1fr .1fr 1fr 1fr 1fr 2fr 1fr;
-    justify-items: center;
-}
-
-.centered-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.game-button {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 5rem;
-    width: fit-content;
-    font-size: 3rem;
-    text-align: center;
+    font-family: RoundedFont;
+    font-size: 1.3rem;
     font-weight: bold;
-    color: #222;
-    padding: .5rem 2rem;
-    background-color: rgba(255, 255, 255, .25);
-    box-shadow: .25rem .25rem .5rem rgba(0, 0, 0, .15);
+    background: #ddd;
 }
 
-.game-button:hover {
-    background-color: rgba(255, 255, 255, .3);
+.flex-container {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.game-button:active {
-    scale: 0.96;
+.flex-row {
+    width: auto;
 }
 
-.square-image {
-    max-width: 28rem;
-    max-height: 28rem;
-    margin-bottom: 1rem;
-}
-
-.occupy-all-gridColumns, hr {
-    grid-column: 1 / -1;
+.flex-item {
+    text-align: center;
 }
