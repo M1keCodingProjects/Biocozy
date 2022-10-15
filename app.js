@@ -1,6 +1,7 @@
 // Hooray! (derogatory)
-const submitBtn = document.getElementById('submitBtn');
+const submitBtn = document.getElementById('btn-submit');
 const inputs    = [...document.getElementsByClassName('input-text')];
+const image     = document.getElementById('image');
 
 const nameOptions = [
     ["serina", "ser", "s"],
@@ -10,13 +11,13 @@ const nameOptions = [
     ["asparagina", "asn", "n"],
     [["acido aspartico", "aspartato"], "asp", "d"],
     ["cisteina", "cys", "c"],
-    [["acido glutammico", "glutammato"], "glu", "e"],
+    [["glutammato", "acido glutammico"], "glu", "e"],
     ["glutammina", "gln", "q"],
     ["glicina", "gly", "g"],
     ["istidina", "his", "h"],
     ["isoleucina", "ile", "i"],
     ["leucina", "leu", "l"],
-    ["lis", "lys", "k"],
+    ["lisina", "lys", "k"],
     ["metionina", "met", "m"],
     ["fenilalanina", "phe", "f"],
     ["prolina", "pro", "p"],
@@ -29,6 +30,7 @@ const nameOptions = [
 // -Martino
 
 let currentCorrectName;
+let canSubmit = true;
 
 const titleAnchor     = document.getElementById('title');
 const titleAnchorRect = titleAnchor.getBoundingClientRect();
@@ -36,6 +38,8 @@ const rotationCenter  = {
     x : titleAnchorRect.left + 45.6,
     y : titleAnchorRect.top  + titleAnchorRect.height / 2,
 };
+
+const scoreSetter = document.getElementById("score");
 
 onmousemove = e => {
     const mousePos = {
@@ -50,17 +54,29 @@ onmousemove = e => {
 };
 
 const submitName =_=> {
+    if(!canSubmit) return;
+    let points = 0;
     inputs.forEach((el, id) => {
         const lowerName = el.value.toLowerCase();
         const isCorrect = currentCorrectName[id] instanceof Array ? currentCorrectName[id].includes(lowerName) : currentCorrectName[id] == lowerName;
         el.parentElement.setAttribute("correct",  isCorrect);
+        points += isCorrect;
     });
+    if(points == 3) {
+        scoreSetter.innerHTML = parseFloat(scoreSetter.innerHTML) + 1;
+        submitBtn.setAttribute("locked", "true");
+        canSubmit = false;
+    }
+    else scoreSetter.innerHTML = parseFloat(scoreSetter.innerHTML) - .25 * (3 - points);
 };
 
 const rollNew =_=> {
-    //manage image change..
-    currentCorrectName = nameOptions[Math.floor(Math.random() * nameOptions.length)];
+    if(!nameOptions.length) return;
+    canSubmit = true;
+    currentCorrectName = nameOptions.splice(Math.floor(Math.random() * nameOptions.length), 1)[0];
+    image.src = `./ASSETS/${currentCorrectName[0] instanceof Array ? currentCorrectName[0][0] : currentCorrectName[0]}.png`;
     inputs.forEach(el => el.parentElement.removeAttribute("correct"));
+    submitBtn.removeAttribute("locked");
 };
 
 rollNew();
