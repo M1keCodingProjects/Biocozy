@@ -41,6 +41,7 @@ const rotationCenter  = {
 };
 
 const scoreSetter = document.getElementById("score");
+const highscoreSetter = document.getElementById("highscore");
 
 onmousemove = e => {
     const mousePos = {
@@ -65,6 +66,7 @@ const submitName =_=> {
     });
     if(points == 3) {
         scoreSetter.innerHTML = parseFloat(scoreSetter.innerHTML) + 1;
+        if(parseFloat(scoreSetter.innerHTML) > parseFloat(highscoreSetter.innerHTML)) highscoreSetter.innerHTML = parseFloat(highscoreSetter.innerHTML) + 1;
         submitBtn.setAttribute("locked", "true");
         canSubmit = false;
     }
