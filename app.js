@@ -1,4 +1,5 @@
 // Hooray! (derogatory)
+// ciao
 const submitBtn = document.getElementById('btn-submit');
 const inputs    = [...document.getElementsByClassName('input-text')];
 const image     = document.getElementById('image');
