@@ -75,7 +75,10 @@ const rollNew =_=> {
     canSubmit = true;
     currentCorrectName = nameOptions.splice(Math.floor(Math.random() * nameOptions.length), 1)[0];
     image.src = `./ASSETS/${currentCorrectName[0] instanceof Array ? currentCorrectName[0][0] : currentCorrectName[0]}.png`;
-    inputs.forEach(el => el.parentElement.removeAttribute("correct"));
+    inputs.forEach(el => {
+        el.parentElement.removeAttribute("correct");
+        el.value = "";
+    });
     submitBtn.removeAttribute("locked");
 };
 
