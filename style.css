@@ -16,6 +16,7 @@ html, body {
     font-size: 1.3rem;
     font-weight: bold;
     background: #ddd;
+    overflow: hidden;
 }
 
 .centered-grid-container {
@@ -27,7 +28,7 @@ html, body {
 
 #game-section-container {
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr repeat(3, .25fr) 1fr .75fr;
+    grid-template-rows: .25fr repeat(3, .25fr) 1fr .75fr;
 }
 
 .grid-fullcolumn-item {
@@ -152,7 +153,7 @@ html, body {
     flex-wrap: wrap;
 }
 
-#btn-submit[locked=true] {
+.btn[locked=true] {
     background-color: rgba(0, 100, 100, 0.4);
     color: rgba(220, 220, 220, 0.4);
     border: none;

@@ -28,10 +28,21 @@ const nameOptions = [
     ["tirosina", "tyr", "y"],
     ["valina", "val", "v"],
 ];
+
+const roundOptions = [];
+
+const loadNames =_=> {
+    roundOptions.push(...nameOptions);
+}
+
+const getName =_=> roundOptions.splice(Math.floor(Math.random() * nameOptions.length), 1)[0];
+
+loadNames();
 // -Martino
 
 let currentCorrectName;
-let canSubmit = true;
+let canSubmit = false;
+let canRoll   = false;
 
 const titleAnchor     = document.getElementById('title');
 const titleAnchorRect = titleAnchor.getBoundingClientRect();
@@ -41,6 +52,7 @@ const rotationCenter  = {
 };
 
 const scoreSetter = document.getElementById("score");
+const highscoreSetter = document.getElementById("highscore");
 
 onmousemove = e => {
     const mousePos = {
@@ -65,6 +77,7 @@ const submitName =_=> {
     });
     if(points == 3) {
         scoreSetter.innerHTML = parseFloat(scoreSetter.innerHTML) + 1;
+        if(parseFloat(scoreSetter.innerHTML) > parseFloat(highscoreSetter.innerHTML)) highscoreSetter.innerHTML = parseFloat(highscoreSetter.innerHTML) + 1;
         submitBtn.setAttribute("locked", "true");
         canSubmit = false;
     }
@@ -72,9 +85,10 @@ const submitName =_=> {
 };
 
 const rollNew =_=> {
+    if(!canRoll) return;
     if(!nameOptions.length) return;
     canSubmit = true;
-    currentCorrectName = nameOptions.splice(Math.floor(Math.random() * nameOptions.length), 1)[0];
+    currentCorrectName = getName();
     image.src = `./ASSETS/${currentCorrectName[0] instanceof Array ? currentCorrectName[0][0] : currentCorrectName[0]}.png`;
     inputs.forEach(el => {
         el.parentElement.removeAttribute("correct");
@@ -83,4 +97,12 @@ const rollNew =_=> {
     submitBtn.removeAttribute("locked");
 };
 
-rollNew();
+const roundsButton = document.getElementById("btn-rounds");
+
+const startRound =_=> {
+    scoreSetter.innerHTML = "0";
+    loadNames();
+    canSubmit = true;
+    canRound = true;
+    rollNew();
+};

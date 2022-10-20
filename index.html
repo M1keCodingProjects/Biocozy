@@ -12,10 +12,16 @@
     <div id="title">Biocozy</div>
 
     <div class="centered-grid-container" id="game-section-container">
-            <div class="grid-fullcolumn-item">Start Round</div>
+            <button class="btn grid-fullcolumn-item" id="btn-rounds" onclick="startRound()">Start Round</button>
             <div class="grid-row3-item" id="score-section">
-                Punteggio:
-                <span id="score">0</span>
+                <div>
+                    Punteggio migliore:
+                    <span id="highscore">0</span>
+                </div>
+                <div>
+                    Punteggio:
+                    <span id="score">0</span>
+                </div>
             </div>
             <div class="grid-row3-item image-container">
                 <img id="image" class="display-squareimage" src="./ASSETS/serina.png" />
@@ -33,8 +39,8 @@
             </div>
 
             <div class="grid-fullcolumn-item btn-container">
-                <button class="btn" id="btn-submit"  onclick="submitName()">Invia</button>
-                <button class="btn" id="btn-rollNew" onclick="rollNew()"></button>
+                <button class="btn" id="btn-submit" locked="true" onclick="submitName()">Invia</button>
+                <button class="btn" id="btn-rollNew" locked="true" onclick="rollNew()"></button>
             </div>
     </div>
 </body>
