@@ -1,6 +1,7 @@
 // Hooray! (derogatory)
 // ciao
 //hello world
+//disabile
 const submitBtn = document.getElementById('btn-submit');
 const rollBtn   = document.getElementById('btn-rollNew');
 const inputs    = [...document.getElementsByClassName('input-text')];
