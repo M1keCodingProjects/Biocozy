@@ -15,7 +15,7 @@
             <span id="timer-container">
                 <div class="flex-row">
                     Timer:&nbsp;<span id="timer">00:00</span>
-                    <button class="btn iconed-btn" id="btn-menu"></button>
+                    <button class="btn iconed-btn" id="btn-menu" onclick="openMenu()"></button>
                 </div>
             </span>
         </div>
@@ -60,10 +60,12 @@
         </div>
     </div>
 
-    <div id="menu">
-        <div id="menu-header"></div>
+    <div id="menu" state="closing">
+        <div id="menu-header">
+            <button class="btn iconed-btn" id="btn-closemenu" onclick="closeMenu()"></button>
+        </div>
         <ul>
-            <li><a href="#">Solutions</a></li>
+            <li><a href="https://it.wikipedia.org/wiki/Amminoacidi_proteinogenici#Amminoacidi_standard" target="_blank">Solutions</a></li>
         </ul>  
       </div>
 </body>

@@ -1,7 +1,3 @@
-// Hooray! (derogatory)
-// ciao
-//hello world
-//disabile
 const submitBtn = document.getElementById('btn-submit');
 const rollBtn   = document.getElementById('btn-rollNew');
 const giveUpBtn = document.getElementById('btn-giveUp');
@@ -133,6 +129,15 @@ const giveUp =_=> {
     canSubmit = false;
     submitBtn.setAttribute("locked", "true");
     inputs.forEach((input, id) => input.value = currentCorrectName[id]);
+};
+
+const menu = document.getElementById("menu");
+const openMenu =_=> {
+    menu.setAttribute("state", "opening");
+};
+
+const closeMenu =_=> {
+    menu.setAttribute("state", "closing");
 };
 
 class Timer {
