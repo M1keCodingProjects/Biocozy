@@ -88,7 +88,7 @@ const rollNew =_=> {
     canSubmit = true;
     currentCorrectName = getName();
     if(!currentCorrectName) return roundOver();
-    image.src = `./ASSETS/${currentCorrectName[0] instanceof Array ? currentCorrectName[0][0] : currentCorrectName[0]}.png`;
+    image.src = `./ASSETS/${currentCorrectName[0] instanceof Array ? currentCorrectName[0][0] : currentCorrectName[0]}.jpg`;
     inputs.forEach(el => {
         el.parentElement.removeAttribute("correct");
         el.value = "";
