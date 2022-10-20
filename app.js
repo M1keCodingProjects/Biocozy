@@ -35,9 +35,7 @@ const loadNames =_=> {
     roundOptions.push(nameOptions[0], nameOptions[2]);
 }
 
-const getName =_=> roundOptions.splice(Math.floor(Math.random() * nameOptions.length), 1)[0];
-
-loadNames();
+const getName =_=> roundOptions.splice(Math.floor(Math.random() * roundOptions.length), 1)[0];
 // -Martino
 
 let currentCorrectName;
@@ -77,7 +75,6 @@ const submitName =_=> {
     });
     if(points == 3) {
         scoreSetter.innerHTML = parseFloat(scoreSetter.innerHTML) + 1;
-        if(parseFloat(scoreSetter.innerHTML) > parseFloat(highscoreSetter.innerHTML)) highscoreSetter.innerHTML = parseFloat(highscoreSetter.innerHTML) + 1;
         submitBtn.setAttribute("locked", "true");
         canSubmit = false;
     }
@@ -86,7 +83,6 @@ const submitName =_=> {
 
 const rollNew =_=> {
     if(!canRoll) return;
-    if(!nameOptions.length) return;
     canSubmit = true;
     currentCorrectName = getName();
     if(!currentCorrectName) return roundOver();
@@ -98,6 +94,7 @@ const rollNew =_=> {
     submitBtn.removeAttribute("locked");
 };
 
+const roundOverSpan = document.getElementById("round-over-span");
 const roundsButton = document.getElementById("btn-rounds");
 
 const startRound =_=> {
@@ -105,6 +102,7 @@ const startRound =_=> {
     image.removeAttribute("hidden");
     inputs.forEach(input => input.parentElement.removeAttribute("hidden"));
     roundsButton.setAttribute("hidden", "true");
+    roundOverSpan.setAttribute("hidden", "true");
     loadNames();
     canSubmit = true;
     canRoll   = true;
@@ -116,8 +114,10 @@ const roundOver =_=> {
     image.setAttribute("hidden", "true");
     inputs.forEach(input => input.parentElement.setAttribute("hidden", "true"));
     roundsButton.removeAttribute("hidden");
+    roundOverSpan.removeAttribute("hidden");
     canSubmit = false;
     canRoll   = false;
+    if(parseFloat(scoreSetter.innerHTML) > parseFloat(highscoreSetter.innerHTML)) highscoreSetter.innerHTML = scoreSetter.innerHTML;
     rollBtn.setAttribute("locked", "true");
     submitBtn.setAttribute("locked", "true");
 };
