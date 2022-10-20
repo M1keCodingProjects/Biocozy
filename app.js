@@ -2,6 +2,7 @@
 // ciao
 //hello world
 const submitBtn = document.getElementById('btn-submit');
+const rollBtn   = document.getElementById('btn-rollNew');
 const inputs    = [...document.getElementsByClassName('input-text')];
 const image     = document.getElementById('image');
 
@@ -13,7 +14,6 @@ const nameOptions = [
     ["asparagina", "asn", "n"],
     [["acido aspartico", "aspartato"], "asp", "d"],
     ["cisteina", "cys", "c"],
-    [["glutammato", "acido glutammico"], "glu", "e"],
     ["glutammina", "gln", "q"],
     ["glicina", "gly", "g"],
     ["istidina", "his", "h"],
@@ -23,7 +23,6 @@ const nameOptions = [
     ["metionina", "met", "m"],
     ["fenilalanina", "phe", "f"],
     ["prolina", "pro", "p"],
-    ["serina", "ser", "s"],
     ["treonina", "thr", "t"],
     ["triptofano", "trp", "w"],
     ["tirosina", "tyr", "y"],
@@ -33,7 +32,7 @@ const nameOptions = [
 const roundOptions = [];
 
 const loadNames =_=> {
-    roundOptions.push(...nameOptions);
+    roundOptions.push(nameOptions[0], nameOptions[2]);
 }
 
 const getName =_=> roundOptions.splice(Math.floor(Math.random() * nameOptions.length), 1)[0];
@@ -90,6 +89,7 @@ const rollNew =_=> {
     if(!nameOptions.length) return;
     canSubmit = true;
     currentCorrectName = getName();
+    if(!currentCorrectName) return roundOver();
     image.src = `./ASSETS/${currentCorrectName[0] instanceof Array ? currentCorrectName[0][0] : currentCorrectName[0]}.png`;
     inputs.forEach(el => {
         el.parentElement.removeAttribute("correct");
@@ -102,8 +102,22 @@ const roundsButton = document.getElementById("btn-rounds");
 
 const startRound =_=> {
     scoreSetter.innerHTML = "0";
+    image.removeAttribute("hidden");
+    inputs.forEach(input => input.parentElement.removeAttribute("hidden"));
+    roundsButton.setAttribute("hidden", "true");
     loadNames();
     canSubmit = true;
-    canRound = true;
+    canRoll   = true;
+    rollBtn.removeAttribute("locked");
     rollNew();
+};
+
+const roundOver =_=> {
+    image.setAttribute("hidden", "true");
+    inputs.forEach(input => input.parentElement.setAttribute("hidden", "true"));
+    roundsButton.removeAttribute("hidden");
+    canSubmit = false;
+    canRoll   = false;
+    rollBtn.setAttribute("locked", "true");
+    submitBtn.setAttribute("locked", "true");
 };

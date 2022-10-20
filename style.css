@@ -19,27 +19,18 @@ html, body {
     overflow: hidden;
 }
 
-.centered-grid-container {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-}
-
-#game-section-container {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: .25fr repeat(3, .25fr) 1fr .75fr;
-}
-
-.grid-fullcolumn-item {
-    grid-column: 1 / -1;
-}
-
-.grid-row3-item {
-    grid-row: 2 / -2;
+.flex-column, .flex-row {
     display: flex;
-    justify-self: center;
+    justify-items: center;
     align-items: center;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
 }
 
 #title {
@@ -69,16 +60,11 @@ html, body {
     left: 6.8rem;
 }
 
-.image-container {
-    overflow: auto;
-    height: 20rem;
-    width: 20rem;
-}
-
 .display-squareimage {
     width: 20rem;
     height: auto;
     box-shadow: .25rem .25rem rgba(0, 0, 0, .15);
+    margin: 1rem;
 }
 
 .input-text-container {
@@ -137,6 +123,7 @@ html, body {
     border-radius: 2.2rem;
     transition: background-color 0.2s ease;
     margin: 0.5rem;
+    transition: visibility 0.2s ease-in-out;
 }
 
 .btn:hover:not([locked=true]) {
@@ -145,12 +132,6 @@ html, body {
 
 .btn:active:not([locked=true]) {
     transform: scale(0.95);
-}
-
-.btn-container {
-    display: inline-flex;
-    flex-direction: row;
-    flex-wrap: wrap;
 }
 
 .btn[locked=true] {
@@ -164,6 +145,7 @@ html, body {
     background-repeat: no-repeat;
     background-position: center;
     padding: 0 2.5rem;
+    min-height: 2.2rem;
 }
 
 #score-section {
