@@ -19,6 +19,14 @@ html, body {
     overflow: hidden;
 }
 
+a, a:visited, a:hover, a:active {
+  text-decoration: none;  
+}
+
+a:visited {
+    color: darkcyan;
+}
+
 .flex-column, .flex-row {
     display: flex;
     justify-items: center;
@@ -141,12 +149,23 @@ html, body {
     border: none;
 }
 
-#btn-rollNew {
-    background-image: url(./ASSETS/shuffle-solid.svg);
+.iconed-btn {
     background-repeat: no-repeat;
     background-position: center;
     padding: 0 2.5rem;
     min-height: 2.2rem;
+}
+
+#btn-rollNew {
+    background-image: url(./ASSETS/shuffle-solid.svg);
+}
+
+#btn-menu {
+    background-image: url(./ASSETS/bars-solid.svg);
+    margin-left: 2rem;
+    margin-right: 0;
+    background-color: transparent;
+    border: 0;
 }
 
 #score-section {
@@ -161,6 +180,21 @@ html, body {
 #timer-container {
     font-size: 2rem;
     position: absolute;
-    right: 1rem;
-    top: 25%;
+    right: 0;
+    top: 10%;
+}
+
+#menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30%;
+    height: 100%;
+    background-color: #eee;
+}
+
+#menu-header {
+    width: 100%;
+    height: 10%;
+    background-color: #e2e2e2;
 }

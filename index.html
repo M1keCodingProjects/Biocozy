@@ -8,50 +8,63 @@
     <script defer src="./app.js"></script>
     <title>Biocozy</title>
 </head>
-<body>
-    <div id="title">
-        Biocozy
-        <span id="timer-container">Timer: <span id="timer">00:00</span></span>
+<body class="flex-row">
+    <div style="position:absolute; top:0">
+        <div id="title">
+            Biocozy
+            <span id="timer-container">
+                <div class="flex-row">
+                    Timer:&nbsp;<span id="timer">00:00</span>
+                    <button class="btn iconed-btn" id="btn-menu"></button>
+                </div>
+            </span>
+        </div>
+
+        <div class="flex-column" id="game-section-container">
+                <div class="flex-column" id="score-section">
+                    <div>
+                        Highscore:
+                        <span id="highscore">0</span>
+                    </div>
+                    <div>
+                        Score:
+                        <span id="score">0</span>
+                    </div>
+                </div>
+
+                <div class="flex-row">
+                    <img hidden id="image" class="display-squareimage" src="" />
+                    <div class="flex-column">
+                        <br>
+                        <span hidden id="round-over-span">Round Over!</span>
+                        <button class="btn" id="btn-rounds" onclick="startRound()">Start Round</button>
+                    </div>
+                    <div class="flex-column">
+                        <div hidden class="input-text-container">
+                            <input type="text" class="input-text" placeholder="Inserisci nome esteso">
+                        </div>
+                        <div hidden class="input-text-container">
+                            <input type="text" class="input-text" placeholder="Inserisci sigla">
+                        </div>
+                        <div hidden class="input-text-container">
+                            <input type="text" class="input-text" placeholder="Inserisci simbolo">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-row">
+                    <button class="btn" id="btn-submit" locked="true" onclick="submitName()">Invia</button>
+                    <button class="btn iconed-btn" id="btn-rollNew" locked="true" onclick="rollNew()"></button>
+                    <button class="btn" id="btn-giveUp"  locked="true" onclick="giveUp()">Give Up</button>
+                </div>
+        </div>
     </div>
 
-    <div class="flex-column" id="game-section-container">
-            <div class="flex-column" id="score-section">
-                <div>
-                    Punteggio migliore:
-                    <span id="highscore">0</span>
-                </div>
-                <div>
-                    Punteggio:
-                    <span id="score">0</span>
-                </div>
-            </div>
-
-            <div class="flex-row">
-                <img hidden id="image" class="display-squareimage" src="" />
-                <div class="flex-column">
-                    <br>
-                    <span hidden id="round-over-span">Round Over!</span>
-                    <button class="btn" id="btn-rounds" onclick="startRound()">Start Round</button>
-                </div>
-                <div class="flex-column">
-                    <div hidden class="input-text-container">
-                        <input type="text" class="input-text" placeholder="Inserisci nome esteso">
-                    </div>
-                    <div hidden class="input-text-container">
-                        <input type="text" class="input-text" placeholder="Inserisci sigla">
-                    </div>
-                    <div hidden class="input-text-container">
-                        <input type="text" class="input-text" placeholder="Inserisci simbolo">
-                    </div>
-                </div>
-                
-            </div>
-
-            <div class="flex-row">
-                <button class="btn" id="btn-submit" locked="true" onclick="submitName()">Invia</button>
-                <button class="btn" id="btn-rollNew" locked="true" onclick="rollNew()"></button>
-                <button class="btn" id="btn-giveUp"  locked="true" onclick="giveUp()">Give Up</button>
-            </div>
-    </div>
+    <div id="menu">
+        <div id="menu-header"></div>
+        <ul>
+            <li><a href="#">Solutions</a></li>
+        </ul>  
+      </div>
 </body>
 </html>

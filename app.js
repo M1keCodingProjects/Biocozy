@@ -34,7 +34,7 @@ const nameOptions = [
 const roundOptions = [];
 
 const loadNames =_=> {
-    roundOptions.push(nameOptions[0], nameOptions[2]);
+    roundOptions.push(...nameOptions);
 }
 
 const getName =_=> roundOptions.splice(Math.floor(Math.random() * roundOptions.length), 1)[0];
@@ -124,6 +124,7 @@ const roundOver =_=> {
     if(parseFloat(scoreSetter.innerHTML) > parseFloat(highscoreSetter.innerHTML)) highscoreSetter.innerHTML = scoreSetter.innerHTML;
     rollBtn.setAttribute("locked", "true");
     submitBtn.setAttribute("locked", "true");
+    giveUpBtn.setAttribute("locked", "true");
     timer.stop();
 };
 
