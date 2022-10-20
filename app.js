@@ -4,6 +4,7 @@
 //disabile
 const submitBtn = document.getElementById('btn-submit');
 const rollBtn   = document.getElementById('btn-rollNew');
+const giveUpBtn = document.getElementById('btn-giveUp');
 const inputs    = [...document.getElementsByClassName('input-text')];
 const image     = document.getElementById('image');
 
@@ -108,7 +109,9 @@ const startRound =_=> {
     canSubmit = true;
     canRoll   = true;
     rollBtn.removeAttribute("locked");
+    giveUpBtn.removeAttribute("locked");
     rollNew();
+    timer.start();
 };
 
 const roundOver =_=> {
@@ -121,4 +124,52 @@ const roundOver =_=> {
     if(parseFloat(scoreSetter.innerHTML) > parseFloat(highscoreSetter.innerHTML)) highscoreSetter.innerHTML = scoreSetter.innerHTML;
     rollBtn.setAttribute("locked", "true");
     submitBtn.setAttribute("locked", "true");
+    timer.stop();
 };
+
+const giveUp =_=> {
+    if(!roundOptions.length) return;
+    canSubmit = false;
+    submitBtn.setAttribute("locked", "true");
+    inputs.forEach((input, id) => input.value = currentCorrectName[id]);
+};
+
+class Timer {
+    constructor() {
+        this.DOMelement = document.getElementById("timer");
+        this.init();
+    }
+
+    init() {
+        this.secs = 0;
+        this.mins = 0;
+        this.updateDOM();
+    }
+
+    start() {
+        this.init();
+        this.activeTimer = setInterval(this.update.bind(this), 1000);
+    }
+
+    stop() {
+        clearInterval(this.activeTimer);
+        this.DOMelement.style.setProperty("scale", "1.1");
+    }
+
+    updateDOM() {
+        const secs_str = (this.secs > 9 ? "" : "0") + this.secs;
+        const mins_str = (this.mins > 9 ? "" : "0") + this.mins;
+        this.DOMelement.innerHTML = `${mins_str}:${secs_str}`;
+    }
+
+    update() {
+        this.secs++;
+        if(this.secs >= 60) {
+            this.mins++;
+            this.secs = 0;
+        }
+        this.updateDOM();
+    }
+}
+
+const timer = new Timer();

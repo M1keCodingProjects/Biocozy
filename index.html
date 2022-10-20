@@ -9,7 +9,10 @@
     <title>Biocozy</title>
 </head>
 <body>
-    <div id="title">Biocozy</div>
+    <div id="title">
+        Biocozy
+        <span id="timer-container">Timer: <span id="timer">00:00</span></span>
+    </div>
 
     <div class="flex-column" id="game-section-container">
             <div class="flex-column" id="score-section">
@@ -47,6 +50,7 @@
             <div class="flex-row">
                 <button class="btn" id="btn-submit" locked="true" onclick="submitName()">Invia</button>
                 <button class="btn" id="btn-rollNew" locked="true" onclick="rollNew()"></button>
+                <button class="btn" id="btn-giveUp"  locked="true" onclick="giveUp()">Give Up</button>
             </div>
     </div>
 </body>
