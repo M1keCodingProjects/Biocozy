@@ -39,6 +39,7 @@ const getName =_=> roundOptions.splice(Math.floor(Math.random() * roundOptions.l
 let currentCorrectName;
 let canSubmit = false;
 let canRoll   = false;
+let inputFocusedId = false;
 
 const titleAnchor     = document.getElementById('title');
 const titleAnchorRect = titleAnchor.getBoundingClientRect();
@@ -60,6 +61,43 @@ onmousemove = e => {
     const angle_deg = angle_rad * 180 / Math.PI;
     
     titleAnchor.style.setProperty('--angle', `${angle_deg}deg`);
+};
+
+onkeydown = e => {
+    switch(e.key) {
+        case "Enter" : {
+            if(canSubmit) submitBtn.style.setProperty("scale", "0.95");
+            submitName();
+            break;
+        }
+
+        case "ArrowUp" : {
+            if(inputFocusedId === false) return;
+            const newID = inputFocusedId ? inputFocusedId - 1 : 2;
+            inputs[newID].focus();
+            break;
+        }
+
+        case "ArrowDown" : {
+            if(inputFocusedId === false) return;
+            inputs[(inputFocusedId + 1) % 3].focus();
+            break;
+        }
+
+        default: return;
+    }
+};
+
+onkeyup = e => {
+    submitBtn.style.setProperty("scale", "1");
+};
+
+const attachFocus_toInputs =_=> {
+    inputs.forEach(input => input.addEventListener("focus", on_inputFocused));
+};
+
+const on_inputFocused = e => {
+    inputFocusedId = inputs.indexOf(e.target);
 };
 
 const submitName =_=> {
@@ -90,6 +128,7 @@ const rollNew =_=> {
         el.value = "";
     });
     submitBtn.removeAttribute("locked");
+    inputs[0].focus();
 };
 
 const roundOverSpan = document.getElementById("round-over-span");
@@ -179,3 +218,4 @@ class Timer {
 }
 
 const timer = new Timer();
+attachFocus_toInputs();

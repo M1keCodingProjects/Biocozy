@@ -197,7 +197,7 @@ a, a:visited, a:hover, a:active {
     width: 30%;
     height: 100%;
     background-color: #eee;
-    transition: all 1s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 
 @keyframes openMenu {
