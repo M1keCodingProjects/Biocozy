@@ -66,7 +66,13 @@ onmousemove = e => {
 onkeydown = e => {
     switch(e.key) {
         case "Enter" : {
-            if(canSubmit) submitBtn.style.setProperty("scale", "0.95");
+            if(!canSubmit) {
+                if(!canRoll) return;
+                rollBtn.style.setProperty("scale", "0.95");
+                rollNew();
+                break;
+            }
+            submitBtn.style.setProperty("scale", "0.95");
             submitName();
             break;
         }
@@ -164,7 +170,7 @@ const roundOver =_=> {
 };
 
 const giveUp =_=> {
-    if(!roundOptions.length) return;
+    if(!canSubmit) return;
     canSubmit = false;
     submitBtn.setAttribute("locked", "true");
     inputs.forEach((input, id) => input.value = currentCorrectName[id]);
