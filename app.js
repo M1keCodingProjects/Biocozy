@@ -146,6 +146,7 @@ const startRound =_=> {
     inputs.forEach(input => input.parentElement.removeAttribute("hidden"));
     roundsButton.setAttribute("hidden", "true");
     roundOverSpan.setAttribute("hidden", "true");
+    roundOverSpan.parentElement.style.setProperty("display", "none");
     loadNames();
     canSubmit = true;
     canRoll   = true;
@@ -160,6 +161,7 @@ const roundOver =_=> {
     inputs.forEach(input => input.parentElement.setAttribute("hidden", "true"));
     roundsButton.removeAttribute("hidden");
     roundOverSpan.removeAttribute("hidden");
+    roundOverSpan.parentElement.style.removeProperty("display");
     canSubmit = false;
     canRoll   = false;
     if(parseFloat(scoreSetter.innerHTML) > parseFloat(highscoreSetter.innerHTML)) highscoreSetter.innerHTML = scoreSetter.innerHTML;
@@ -177,13 +179,8 @@ const giveUp =_=> {
 };
 
 const menu = document.getElementById("menu");
-const openMenu =_=> {
-    menu.setAttribute("state", "opening");
-};
-
-const closeMenu =_=> {
-    menu.setAttribute("state", "closing");
-};
+const openMenu  =_=> menu.style.setProperty("width", "30%");
+const closeMenu =_=> menu.style.setProperty("width", "0");
 
 class Timer {
     constructor() {

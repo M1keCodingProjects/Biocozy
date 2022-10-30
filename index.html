@@ -10,16 +10,16 @@
 </head>
 <body class="flex-row">
     <div style="position:absolute; top:0">
-        <div id="title" class="flex-row">
-            Biocozy
-            <span id="timer-container">
-                <div class="flex-row">
-                    Timer:&nbsp;<span id="timer">00:00</span>
+        <div class="title-container">
+            <div id="title">Biocozy</div>
+            <div class="RightJustifiedGUI flex-row">
+                <div id="timer-container">Timer:&nbsp;<span id="timer">00:00</span></div>
+                <div id="menu-container">
                     <button class="btn iconed-btn" id="btn-menu" onclick="openMenu()"></button>
-                </div>
-            </span>
+                </div>  
+            </div>
         </div>
-
+        
         <div class="flex-column" id="game-section-container">
                 <div class="flex-column" id="score-section">
                     <div>
@@ -32,9 +32,9 @@
                     </div>
                 </div>
 
-                <div class="flex-row">
+                <div class="flex-row" id="central-section">
                     <img hidden id="image" class="display-squareimage" src="" />
-                    <div class="flex-column">
+                    <div class="flex-column" id="roundOver-section">
                         <br>
                         <span hidden id="round-over-span">Round Over!</span>
                         <button class="btn" id="btn-rounds" onclick="startRound()">Start Round</button>
@@ -60,7 +60,7 @@
         </div>
     </div>
 
-    <div id="menu" state="closing">
+    <div id="menu">
         <div id="menu-header">
             <button class="btn iconed-btn" id="btn-closemenu" onclick="closeMenu()"></button>
         </div>
