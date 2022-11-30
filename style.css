@@ -243,3 +243,8 @@ a, a:visited, a:hover, a:active {
     height: 10%;
     background-color: #e2e2e2;
 }
+
+#canvas {
+    width: 100%;
+    height: auto;
+}
