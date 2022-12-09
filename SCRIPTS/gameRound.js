@@ -1,7 +1,14 @@
 import Timer from "./timer.js";
 
+const _regExpMatch = (regExp, pattern) => {
+    const match = pattern.match(regExp);
+    return match === null ? [] : match;
+};
+
 export default class GameRoundManager {
-    constructor(options) {
+    constructor(pathway, ext, options) {
+        this.imgPath   = pathway;
+        this.imgExt    = ext;
         this.options   = options;
         this.timer     = new Timer();
         this.image     = document.getElementById("image");
@@ -36,7 +43,7 @@ export default class GameRoundManager {
         this.points            = 0;
         this.currentSolution   = null;
         this.selectedInputID   = null;
-        this.roundAvailableOps = [...this.options];
+        this.roundAvailableOps = this.options.map(el => [...el]);
     }
 
     selectInput(event) {
@@ -67,7 +74,7 @@ export default class GameRoundManager {
         let correctInputs = 0;
         this.inputList.forEach((el, id) => {
             const lowerName = el.value.toLowerCase();
-            const isCorrect = lowerName == (this.currentSolution[id] instanceof RegExp ? lowerName.match(this.currentSolution[id])[0] : this.currentSolution[id]);
+            const isCorrect = lowerName == (this.currentSolution[id] instanceof RegExp ? _regExpMatch(this.currentSolution[id], lowerName)[0] : this.currentSolution[id]);
             el.parentElement.setAttribute("correct",  isCorrect);
             correctInputs += isCorrect;
         });
@@ -99,8 +106,8 @@ export default class GameRoundManager {
     };
 
     updateImage() {
-        const imgName = this.currentSolution.length == 4 ? this.currentSolution[3] : this.currentSolution[0];
-        this.image.src = `./ASSETS/${imgName}.jpg`;
+        const imgName = this.currentSolution[0] instanceof RegExp ? this.currentSolution[this.currentSolution.length - 1] : this.currentSolution[0];
+        this.image.src = `./ASSETS/${this.imgPath}/${imgName}.${this.imgExt}`;
     }
 
     updateScore() {

@@ -8,6 +8,4 @@ const closeMenuBtn   = document.querySelector("#menu > #menu-header > #btn-close
 openMenuBtn.onclick  =_=> menu.style.setProperty("width", "30%");
 closeMenuBtn.onclick =_=> menu.style.setProperty("width", "0");
 
-
-
 const title = new AnimatedTitle();

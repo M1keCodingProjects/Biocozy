@@ -39,7 +39,7 @@ html, body {
     font-size: 1.3rem;
     font-weight: bold;
     background: #ddd;
-    overflow: hidden;
+    overflow: auto;
 }
 
 a, a:visited, a:hover, a:active {
@@ -118,6 +118,10 @@ a, a:visited, a:hover, a:active {
     font-weight: bold;
     position: relative;
     width: 11rem;
+}
+
+.longer {
+    width: 14rem;
 }
 
 .input-text-container::after {

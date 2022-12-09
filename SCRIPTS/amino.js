@@ -1,6 +1,6 @@
 import GameRoundManager from "./gameRound.js";
 
-const gameRoundManager = new GameRoundManager([
+const gameRoundManager = new GameRoundManager("AMINO", "jpg", [
     ["serina", "ser", "s"],
     ["alanina", "ala", "a"],
     [/glutammato|acido glutammico/, "glu", "e", "glutammato"],
