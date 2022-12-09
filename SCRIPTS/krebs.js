@@ -1,7 +1,6 @@
 import GameRoundManager from "./gameRound.js";
 
-const gameRoundManager = new GameRoundManager("KREBS", ".png", [
-    [/acetil ?coa/, /piruvato ?deidrogenasi/, "acetilCoA"],
+const gameRoundManager = new GameRoundManager("KREBS", "png", [
     ["ossalacetato", /citrato ?sintasi/],
     ["citrato", "aconitasi"],
     ["isocitrato", /isocitrato ?deidrogenasi/],
@@ -11,4 +10,23 @@ const gameRoundManager = new GameRoundManager("KREBS", ".png", [
     ["fumarato", "fumarasi"],
     ["malato", /malato ?deidrogenasi/],
 ]);
+
+const oldRoll = gameRoundManager.roll.bind(gameRoundManager);
+gameRoundManager.roll = (function() {
+    oldRoll();
+    if(this.state == "done") return;
+    const getBefore = Math.random() > 0.5;
+    let reaction;
+    for(let i = 0; i < this.options.length; i++) {
+        const option = this.options[i];
+        if(option[option.length - 1] == this.currentSolution[this.currentSolution.length - 1]) {
+            reaction = this.options[Math.abs(i + 1 - 2 * getBefore) - 1];
+            break;
+        }
+    }
+    this.currentSolution.splice(1, 0, reaction[0]);
+    if(getBefore) this.currentSolution[2] = reaction[1];
+    this.inputList[1].placeholder = `Inserisci il nome del ${getBefore ? "reagente" : "prodotto"}`;
+}).bind(gameRoundManager);
+gameRoundManager.rollBtn.onclick = gameRoundManager.roll.bind(gameRoundManager);
 

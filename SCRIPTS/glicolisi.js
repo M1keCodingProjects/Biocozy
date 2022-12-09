@@ -13,8 +13,9 @@ const gameRoundManager = new GameRoundManager("GLICOLISI", "png", [
     ["piruvato"],
 ]);
 
-gameRoundManager.rollBtn.onclick = (function() {
-    this.roll();
+const oldRoll = gameRoundManager.roll.bind(gameRoundManager);
+gameRoundManager.roll = (function() {
+    oldRoll();
     if(this.state == "done") return;
     const getBefore = this.currentSolution[0] == "glucosio" ? 0 : this.currentSolution[0] == "piruvato" ? 1 : Math.random() > 0.5;
     let reaction;
@@ -29,3 +30,4 @@ gameRoundManager.rollBtn.onclick = (function() {
     if(getBefore) this.currentSolution[2] = reaction[1];
     this.inputList[1].placeholder = `Inserisci il nome del ${getBefore ? "reagente" : "prodotto"}`;
 }).bind(gameRoundManager);
+gameRoundManager.rollBtn.onclick = gameRoundManager.roll.bind(gameRoundManager);
