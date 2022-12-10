@@ -42,6 +42,10 @@ html, body {
     overflow: auto;
 }
 
+iframe {
+    margin: auto;
+}
+
 a, a:visited, a:hover, a:active {
   text-decoration: none;
   color: darkcyan;
@@ -74,7 +78,7 @@ a, a:visited, a:hover, a:active {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
-#title {
+.title {
     font-size: 2.5rem;
     padding: .5rem 1rem;
     text-shadow: .15rem .15rem rgba(0, 0, 0, .25);
@@ -103,6 +107,8 @@ a, a:visited, a:hover, a:active {
     height: auto;
     box-shadow: .25rem .25rem rgba(0, 0, 0, .15);
     margin: 1rem;
+    object-position: center center;
+    object-fit: cover;
 }
 
 .input-text-container {

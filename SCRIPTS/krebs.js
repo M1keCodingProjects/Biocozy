@@ -1,19 +1,6 @@
 import GameRoundManager from "./gameRound.js";
 
-const gameRoundManager = new GameRoundManager("KREBS", "png", [
-    ["ossalacetato", /citrato ?sintasi/],
-    ["citrato", "aconitasi"],
-    ["isocitrato", /isocitrato ?deidrogenasi/],
-    [/al(ph|f)a ?chetoglutarato/, /al(ph|f)a ?chetoglutarato ?deidrogenasi/, "alphachetoglutarato"],
-    [/succinil ?coa/, /succinil ?coa ?sintetasi/, "succinilCoA"],
-    ["succinato", /succinato ?deidrogenasi/],
-    ["fumarato", "fumarasi"],
-    ["malato", /malato ?deidrogenasi/],
-]);
-
-const oldRoll = gameRoundManager.roll.bind(gameRoundManager);
-gameRoundManager.roll = (function() {
-    oldRoll();
+const rollBehaviour = function() {
     if(this.state == "done") return;
     const getBefore = Math.random() > 0.5;
     let reaction;
@@ -27,6 +14,15 @@ gameRoundManager.roll = (function() {
     this.currentSolution.splice(1, 0, reaction[0]);
     if(getBefore) this.currentSolution[2] = reaction[1];
     this.inputList[1].placeholder = `Inserisci il nome del ${getBefore ? "reagente" : "prodotto"}`;
-}).bind(gameRoundManager);
-gameRoundManager.rollBtn.onclick = gameRoundManager.roll.bind(gameRoundManager);
+}
 
+const gameRoundManager = new GameRoundManager("KREBS", "png", [
+    ["ossalacetato", /citrato ?sintasi/],
+    ["citrato", "aconitasi"],
+    ["isocitrato", /isocitrato ?deidrogenasi/],
+    [/al(ph|f)a ?chetoglutarato/, /al(ph|f)a ?chetoglutarato ?deidrogenasi/, "alphachetoglutarato"],
+    [/succinil ?coa/, /succinil ?coa ?sintetasi/, "succinilCoA"],
+    ["succinato", /succinato ?deidrogenasi/],
+    ["fumarato", "fumarasi"],
+    ["malato", /malato ?deidrogenasi/],
+], rollBehaviour);

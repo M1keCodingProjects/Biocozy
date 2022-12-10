@@ -6,7 +6,7 @@ const _regExpMatch = (regExp, pattern) => {
 };
 
 export default class GameRoundManager {
-    constructor(pathway, ext, options) {
+    constructor(pathway, ext, options, rollBehaviour) {
         this.imgPath   = pathway;
         this.imgExt    = ext;
         this.options   = options;
@@ -24,12 +24,23 @@ export default class GameRoundManager {
         this.scoreBoard     = document.getElementById("score");
         this.highscoreBoard = document.getElementById("highscore");
 
-        this.init();
+        this.init(rollBehaviour);
     }
 
-    init() {
+    init(rollBehaviour = null) {
         this.changeState("done");
         this.reset();
+
+        if(rollBehaviour !== null) {
+            rollBehaviour = rollBehaviour.bind(this);
+            const oldRollBehaviour = this.roll.bind(this);
+            this.roll = (function() {
+                oldRollBehaviour();
+                rollBehaviour();
+            }).bind(this);
+        }
+        
+
         this.startBtn.onclick  = this.startRound.bind(this);
         this.submitBtn.onclick = this.submit.bind(this);
         this.rollBtn.onclick   = this.roll.bind(this);
@@ -64,8 +75,10 @@ export default class GameRoundManager {
     };
 
     endRound() {
-        this.changeState("done");
         this.timer.stop();
+        this.changeState("done");
+        this.endRoundLabel.removeAttribute("hidden");
+        this.endRoundLabel.parentElement.style.removeProperty("display");
     };
 
     submit() {
@@ -140,9 +153,7 @@ export default class GameRoundManager {
             case "done"    :
                 this.image.setAttribute("hidden", "true");
                 this.startBtn.removeAttribute("hidden");
-                this.endRoundLabel.removeAttribute("hidden");
-
-                this.endRoundLabel.parentElement.style.removeProperty("display");
+                
                 this.inputList.forEach(input => input.parentElement.setAttribute("hidden", "true"));
                 
                 this.submitBtn.setAttribute("locked", "true");

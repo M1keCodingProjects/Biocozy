@@ -1,21 +1,6 @@
 import GameRoundManager from "./gameRound.js";
 
-const gameRoundManager = new GameRoundManager("GLICOLISI", "png", [
-    ["glucosio", "esochinasi"],
-    [/glucosio( |-)?6( |-)?fosfato/, "fosfoglucoisomerasi", "g6p"],
-    [/fruttosio( |-)?6( |-)?fosfato/, /fosfofrutto ?chinasi((-| )?1)?/, "f6p"],
-    [/fruttosio( |-)?1,6( |-)?bifosfato/, "aldolasi", "f1,6bp"],
-    [/gliceraldeide( |-)?3( |-)?fosfato/, /gliceraldeide( |-)?3( |-)?fosfato ?deidrogenasi/, "g3p"],
-    [/1,3( |-)?bifosfoglicerato/, /fosfoglicerato ?chinasi/, "bpg"],
-    [/3 ?fosfoglicerato/, /fosfoglicerato ?mutasi/, "3pg"],
-    [/2 ?fosfoglicerato/, "enolasi", "2pg"],
-    [/fosfoenol ?piruvato/, /piruvato ?chinasi/, "pep"],
-    ["piruvato"],
-]);
-
-const oldRoll = gameRoundManager.roll.bind(gameRoundManager);
-gameRoundManager.roll = (function() {
-    oldRoll();
+const rollBehaviour = function() {
     if(this.state == "done") return;
     const getBefore = this.currentSolution[0] == "glucosio" ? 0 : this.currentSolution[0] == "piruvato" ? 1 : Math.random() > 0.5;
     let reaction;
@@ -29,5 +14,17 @@ gameRoundManager.roll = (function() {
     this.currentSolution.splice(1, 0, reaction[0]);
     if(getBefore) this.currentSolution[2] = reaction[1];
     this.inputList[1].placeholder = `Inserisci il nome del ${getBefore ? "reagente" : "prodotto"}`;
-}).bind(gameRoundManager);
-gameRoundManager.rollBtn.onclick = gameRoundManager.roll.bind(gameRoundManager);
+};
+
+const gameRoundManager = new GameRoundManager("GLICOLISI", "png", [
+    ["glucosio", "esochinasi"],
+    [/glucosio( |-)?6( |-)?fosfato/, "fosfoglucoisomerasi", "g6p"],
+    [/fruttosio( |-)?6( |-)?fosfato/, /fosfofrutto ?chinasi((-| )?1)?/, "f6p"],
+    [/fruttosio( |-)?1,6( |-)?bifosfato/, "aldolasi", "f1,6bp"],
+    [/gliceraldeide( |-)?3( |-)?fosfato/, /gliceraldeide( |-)?3( |-)?fosfato ?deidrogenasi/, "g3p"],
+    [/1,3( |-)?bifosfoglicerato/, /fosfoglicerato ?chinasi/, "bpg"],
+    [/3( |-)?fosfoglicerato/, /fosfoglicerato ?mutasi/, "3pg"],
+    [/2( |-)?fosfoglicerato/, "enolasi", "2pg"],
+    [/fosfoenol ?piruvato/, /piruvato ?chinasi/, "pep"],
+    ["piruvato"],
+], rollBehaviour);
