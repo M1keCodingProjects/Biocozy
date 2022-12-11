@@ -16,7 +16,7 @@ const rollBehaviour = function() {
     this.inputList[1].placeholder = `Inserisci il nome del ${getBefore ? "reagente" : "prodotto"}`;
 };
 
-const gameRoundManager = new GameRoundManager("GLICOLISI", "png", [
+const gameRoundManager = new GameRoundManager("GLICOLISI", "jpg", [
     ["glucosio", "esochinasi"],
     [/glucosio( |-)?6( |-)?fosfato/, "fosfoglucoisomerasi", "g6p"],
     [/fruttosio( |-)?6( |-)?fosfato/, /fosfofrutto ?chinasi((-| )?1)?/, "f6p"],

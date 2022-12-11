@@ -6,8 +6,9 @@ const rollBehaviour = function() {
     let reaction;
     for(let i = 0; i < this.options.length; i++) {
         const option = this.options[i];
-        if(option[option.length - 1] == this.currentSolution[this.currentSolution.length - 1]) {
-            reaction = this.options[Math.abs(i + 1 - 2 * getBefore) - 1];
+        const nameIsRegExp = option[0] instanceof RegExp;
+        if(option[(option.length - 1) * nameIsRegExp] == this.currentSolution[(this.currentSolution.length - 1) * nameIsRegExp]) {
+            reaction = this.options[(i + 1 - 2 * getBefore + 8) % 8];
             break;
         }
     }
@@ -16,7 +17,7 @@ const rollBehaviour = function() {
     this.inputList[1].placeholder = `Inserisci il nome del ${getBefore ? "reagente" : "prodotto"}`;
 }
 
-const gameRoundManager = new GameRoundManager("KREBS", "png", [
+const gameRoundManager = new GameRoundManager("KREBS", "jpg", [
     ["ossalacetato", /citrato ?sintasi/],
     ["citrato", "aconitasi"],
     ["isocitrato", /isocitrato ?deidrogenasi/],
