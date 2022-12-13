@@ -46,9 +46,13 @@ iframe {
     margin: auto;
 }
 
-a, a:visited, a:hover, a:active {
+a, a:visited, a:active {
   text-decoration: none;
   color: darkcyan;
+}
+
+a:hover {
+    color:rgb(0, 170, 150);
 }
 
 .flex-column, .flex-row, .RightJustifiedGUI {

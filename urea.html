@@ -4,17 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css"></link>
-    <script defer type="module" src="./SCRIPTS/app.js"></script>
-    <script defer type="module" src="./SCRIPTS/krebs.js"></script>
-    <title>Biocosi - Krebs</title>
+    <link rel="stylesheet" href="./style.css">
+    <script type="module" defer src="./SCRIPTS/app.js"></script>
+    <script type="module" defer src="./SCRIPTS/urea.js"></script>
+    <title>Biocosi - Ciclo dell'urea</title>
     <link rel="icon" href="./ASSETS/duck.ico">
+    <style>
+        .flex-column > .btn, .flex-row > .btn {
+            display: none !important;
+        }
+    </style>
 </head>
 <body class="flex-row">
     <div style="position:absolute; top:0">
         <div class="title-container">
             <div class="title" id="title">Biocozy</div>
-            <div class="title">Ciclo di 🦀🦀</div>
+            <div class="title">Ciclo dell'urea</div>
             <div class="RightJustifiedGUI flex-row">
                 <div id="timer-container">Timer:&nbsp;<span id="timer">00:00</span></div>
                 <div id="menu-container">
@@ -40,17 +45,18 @@
                     <div class="flex-column" id="roundOver-section">
                         <br>
                         <span hidden id="round-over-span">Round Over!</span>
+                        This page is still under development!
                         <button class="btn" id="btn-rounds">Start Round</button>
                     </div>
                     <div class="flex-column">
                         <div hidden class="input-text-container">
-                            <input type="text" class="input-text longer" placeholder="Inserisci il nome dell'intermedio">
+                            <input type="text" class="input-text" placeholder="Inserisci il nome dell'intermedio">
                         </div>
                         <div hidden class="input-text-container">
-                            <input type="text" class="input-text longer" placeholder="Inserisci il nome del ">
+                            <input type="text" class="input-text" placeholder="Inserisci il nome del ">
                         </div>
                         <div hidden class="input-text-container">
-                            <input type="text" class="input-text longer" placeholder="Inserisci l'enzima che catalizza la reazione">
+                            <input type="text" class="input-text" placeholder="Inserisci l'enzima che catalizza la reazione">
                         </div>
                     </div>
                 </div>
@@ -71,7 +77,7 @@
             <li><a href="./nothing-here.html" target="_blank">Solutions</a></li>
             <li><a href="./index.html">Amminoacidi</a></li>
             <li><a href="./glicolisi.html">Glicolisi</a></li>
-            <li><a href="./urea.html">Ciclo dell'urea</a></li>
+            <li><a href="./krebs.html">Krebs</a></li>
         </ul>  
       </div>
 </body>
