@@ -38,8 +38,8 @@ html, body {
     font-family: RoundedFont;
     font-size: 1.3rem;
     font-weight: bold;
-    background: #ddd;
-    overflow: auto;
+    background: #f2f2f2;
+    overflow: hidden;
 }
 
 iframe {
@@ -79,7 +79,7 @@ a:hover {
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(0, 255, 179, 0.077);
 }
 
 .title {

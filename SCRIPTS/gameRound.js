@@ -92,8 +92,9 @@ export default class GameRoundManager {
             correctInputs += isCorrect;
         });
 
-        const gotPerfectScore = correctInputs == 3;
-        this.points += gotPerfectScore ? 1 : -0.25 * (3 - correctInputs);
+        const len = this.inputList.length;
+        const gotPerfectScore = correctInputs == len;
+        this.points += gotPerfectScore ? 1 : -0.25 * (len - correctInputs);
         this.updateScore();
         if(!gotPerfectScore) return;
         this.changeState("locked");
@@ -176,12 +177,12 @@ export default class GameRoundManager {
 
             case "ArrowUp" : {
                 if(this.selectedInputID === null) return;
-                this.inputList[this.selectedInputID ? this.selectedInputID - 1 : 2].focus(); break;
+                this.inputList[this.selectedInputID ? this.selectedInputID - 1 : this.inputList.length - 1].focus(); break;
             }
     
             case "ArrowDown" : {
                 if(this.selectedInputID === null) return;
-                this.inputList[(this.selectedInputID + 1) % 3].focus(); break;
+                this.inputList[(this.selectedInputID + 1) % this.inputList.length].focus(); break;
             }
         }
     }

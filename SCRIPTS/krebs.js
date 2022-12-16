@@ -14,7 +14,7 @@ const rollBehaviour = function() {
     }
     this.currentSolution.splice(1, 0, reaction[0]);
     if(getBefore) this.currentSolution[2] = reaction[1];
-    this.inputList[1].placeholder = `Inserisci il nome del ${getBefore ? "reagente" : "prodotto"}`;
+    this.inputList[1].placeholder = `Inserisci composto ${getBefore ? "precedente" : "successivo"}`;
 }
 
 const gameRoundManager = new GameRoundManager("KREBS", "jpg", [
