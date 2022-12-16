@@ -89,6 +89,15 @@ a:hover {
     position: relative;
 }
 
+#title {
+    background: url(./ASSETS/santa-hat.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 4rem;
+    background-position-x: -14%;
+    background-position-y: -40%;
+}
+
 #title::before, #title::after {
     content: ".";
     position: absolute;
@@ -261,4 +270,37 @@ a:hover {
 #canvas {
     width: 100%;
     height: auto;
+}
+
+@keyframes snow-falling {
+    from {
+        transform: translate(calc(var(--x-coord) - var(--wobble)), -1rem);
+    }
+
+    to {
+        transform: translate(calc(var(--x-coord) + var(--wobble)), 105vh);
+    }
+}
+
+.snow-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.snowflake {
+    --x-coord: 0;
+    --wobble: 0px;
+    --time: 5s;
+    --glow-time: 5s;
+    --delay: 0s;
+    --size: .25rem;
+    opacity: 0;
+    animation: snow-falling var(--time) linear var(--delay) infinite;
+    width: var(--size);
+    height: var(--size);
+    border-radius: calc(var(--size) / 2);
+    background: white;
+    position: fixed;
+    transition: width 0.3s ease-in-out, opacity var(--glow-time) ease-in-out;
 }
