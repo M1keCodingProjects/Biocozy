@@ -1,4 +1,9 @@
 window.onload =_=> {
+    const todaysDate = new Date();
+    if(todaysDate.getDate() != 25 || todaysDate.getMonth() != 11) return;
+
+    document.getElementById("title").style.setProperty("background", "url(./ASSETS/santa-hat.svg)");
+
     const resetSnowflake = function(snowflake) {
         snowflake.style.setProperty("--size",      `${Math.random() * .25 + .25}rem`);
         snowflake.style.setProperty("--x-coord",   `${Math.random() * 100      }vw` );

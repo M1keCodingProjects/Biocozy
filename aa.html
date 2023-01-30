@@ -6,15 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <script type="module" defer src="./SCRIPTS/app.js"></script>
-    <script type="module" defer src="./SCRIPTS/urea.js"></script>
-    <title>Biocosi - Ciclo dell'urea</title>
+    <script type="module" defer src="./SCRIPTS/amino.js"></script>
+    <script src="./SCRIPTS/snow.js"></script>
+    <title>Biocosi - Amminoacidi</title>
     <link rel="icon" href="./ASSETS/duck.ico">
 </head>
 <body class="flex-row">
+    <div class="snow-container">
+        
+    </div>
     <div style="position:absolute; top:0">
         <div class="title-container">
             <div class="title" id="title">Biocozy</div>
-            <div class="title">Ciclo dell'urea</div>
+            <div class="title">Amminoacidi</div>
             <div class="RightJustifiedGUI flex-row">
                 <div id="timer-container">Timer:&nbsp;<span id="timer">00:00</span></div>
                 <div id="menu-container">
@@ -44,10 +48,13 @@
                     </div>
                     <div class="flex-column">
                         <div hidden class="input-text-container">
-                            <input type="text" class="input-text" placeholder="Inserisci composto">
+                            <input type="text" class="input-text" placeholder="Inserisci nome esteso">
                         </div>
                         <div hidden class="input-text-container">
-                            <input type="text" class="input-text" placeholder="">
+                            <input type="text" class="input-text" placeholder="Inserisci sigla">
+                        </div>
+                        <div hidden class="input-text-container">
+                            <input type="text" class="input-text" placeholder="Inserisci simbolo">
                         </div>
                     </div>
                 </div>
@@ -65,10 +72,10 @@
             <button class="btn iconed-btn" id="btn-closemenu"></button>
         </div>
         <ul>
-            <li><a href="./nothing-here.html" target="_blank">Solutions</a></li>
-            <li><a href="./aa.html">Amminoacidi</a></li>
+            <li><a href="https://it.wikipedia.org/wiki/Amminoacidi_proteinogenici#Amminoacidi_standard" target="_blank">Solutions</a></li>
             <li><a href="./glicolisi.html">Glicolisi</a></li>
             <li><a href="./krebs.html">Krebs</a></li>
+            <li><a href="./urea.html">Ciclo dell'urea</a></li>
         </ul>  
       </div>
 </body>
